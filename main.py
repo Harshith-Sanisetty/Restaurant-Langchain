@@ -1,14 +1,14 @@
 import streamlit as st
 import langchain_helper
 
-st.title("Software Company Name Generator")
+st.title("Restaurant Name Generator")
 
-industry = st.sidebar.selectbox("Pick an Industry", ("Finance", "Healthcare", "E-commerce", "Education", "Technology"))
+cuisine = st.sidebar.selectbox("Pick a Cuisine", ("Indian", "Italian", "Mexican", "Arabic", "American"))
 
-if industry:
-    response = langchain_helper.generate_company_name_and_info(industry)
-    st.header(response['company_name'].strip())
-    company_info = response['company_info'].strip().split("\n")
-    st.write("**Company Info**")
-    for info in company_info:
-        st.write("-", info)
+if cuisine:
+    response = langchain_helper.generate_restaurant_name_and_items(cuisine)
+    st.header(response['restaurant_name'].strip())
+    menu_items = response['menu_items'].strip().split(",")
+    st.write("**Menu Items**")
+    for item in menu_items:
+        st.write("-", item)
